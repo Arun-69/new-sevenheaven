@@ -43,7 +43,7 @@ export const siteConfig = {
   location: "Asoor, Perambalur, Tamil Nadu",
   locationMapUrl: "Seven Heaven Photography, Asoor, Perambalur, Tamil Nadu",
   // Social
-  instagram: "https://www.instagram.com/seven_heaven__photography?stkn=MWpibno1ZHNicW9mbQ%3D%3D.com",
+  instagram: "https://https://www.instagram.com/seven_heaven__photography?stkn=MWpibno1ZHNicW9mbQ%3D%3D.com/sevenheavenphotography",
   facebook: "https://facebook.com/sevenheavenphotography",
   youtube: "https://youtube.com/@sevenheavenphotography",
 

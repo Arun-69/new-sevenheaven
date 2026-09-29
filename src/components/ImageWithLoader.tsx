@@ -45,7 +45,7 @@ export default function ImageWithLoader({
     <>
       <div
         aria-hidden="true"
-        className={`absolute inset-0 flex items-center justify-center bg-[#1a140c] transition-opacity duration-700 ${
+        className={`absolute inset-0 flex items-center justify-center bg-bg-deep transition-opacity duration-700 ${
           loaded ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
       >

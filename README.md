@@ -66,6 +66,26 @@ Replace the Unsplash placeholder URLs with real studio photography before launch
 | `/admin` | Admin dashboard demo (separate practical UI) |
 | `/admin/*` | Admin sub-sections (events, clients, portfolio, galleries, services, packages, enquiries, testimonials, team, settings) — placeholder screens, ready to wire to a real backend |
 
+## Deploying to Vercel (image uploads / admin edits)
+
+The admin panel (photo uploads, story/service/pricing/team edits) writes to
+the filesystem, which works out of the box on a normal Node server or VPS
+(`npm run build && npm run start`). **Vercel's filesystem is read-only at
+runtime**, so on Vercel you must connect a **Vercel Blob** store — the app
+detects it automatically and switches storage, no code changes needed:
+
+1. In the Vercel dashboard, open your project → **Storage** tab → **Create
+   Database** → **Blob**.
+2. Connect it to this project. Vercel automatically adds a
+   `BLOB_READ_WRITE_TOKEN` environment variable to the project.
+3. Redeploy (or it will redeploy automatically). Once that env var is
+   present, photo uploads and all admin content edits are saved to Blob
+   storage instead of disk, and persist across deploys.
+
+Without a connected Blob store, admin uploads/edits on Vercel will fail with
+a "filesystem is read-only" error — they still work locally with `npm run
+dev` either way, since that always uses the local disk.
+
 ## Backend Integration (Future)
 
 The data layer in `src/data/` is written so it can be swapped for real API calls (e.g. `fetch('/api/stories')`) with minimal changes to components. The intended architecture:

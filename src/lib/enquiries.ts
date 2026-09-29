@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import { readJSON, writeJSON } from "@/lib/content";
+import { readJSON, writeJSON } from "@/lib/storage";
 
 export interface Enquiry {
   id: string;

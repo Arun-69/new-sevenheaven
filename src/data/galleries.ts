@@ -17,8 +17,8 @@ export interface ClientGallery {
 
 export const galleries: ClientGallery[] = [
   {
-    slug: "Hari-priya",
-    clientNames: "Hari & Priya",
+    slug: "arun-priya",
+    clientNames: "Arun & Priya",
     eventType: "Wedding",
     year: 2026,
     passwordProtected: true,

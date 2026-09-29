@@ -1,36 +1,14 @@
-import fs from "fs/promises";
-import path from "path";
+import { readJSON, writeJSON } from "@/lib/storage";
 import { stories as seedStories, type Story } from "@/data/stories";
 import { services as seedServices, type Service } from "@/data/services";
 import { pricingTiers as seedPricing, type PricingTier } from "@/data/pricing";
 import { team as seedTeam, type TeamMember } from "@/data/team";
 
 // Server-only. Once an admin makes their first edit to a collection, its
-// content/*.json file becomes the live source of truth for the site —
-// before that, the site reads the defaults shipped in src/data/*.ts.
-//
-// Same hosting note as src/lib/media.ts: this needs a persistent, writable
-// filesystem (any normal Node server / VPS via `npm run build && npm run
-// start`). It will not persist on read-only-filesystem serverless hosts.
-
-const CONTENT_DIR = path.join(process.cwd(), "content");
-
-export async function readJSON<T>(file: string, seed: T): Promise<T> {
-  const full = path.join(CONTENT_DIR, file);
-  try {
-    const raw = await fs.readFile(full, "utf-8");
-    return JSON.parse(raw) as T;
-  } catch {
-    await fs.mkdir(CONTENT_DIR, { recursive: true });
-    await fs.writeFile(full, JSON.stringify(seed, null, 2), "utf-8");
-    return seed;
-  }
-}
-
-export async function writeJSON<T>(file: string, data: T): Promise<void> {
-  await fs.mkdir(CONTENT_DIR, { recursive: true });
-  await fs.writeFile(path.join(CONTENT_DIR, file), JSON.stringify(data, null, 2), "utf-8");
-}
+// content/*.json "file" (see src/lib/storage.ts) becomes the live source of
+// truth for the site — before that, the site reads the defaults shipped in
+// src/data/*.ts. Persistence (local disk vs. Vercel Blob) is handled by
+// src/lib/storage.ts, so this file just calls readJSON/writeJSON.
 
 // ---------- Portfolio Stories ----------
 export async function getStories(): Promise<Story[]> {

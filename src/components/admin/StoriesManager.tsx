@@ -134,7 +134,7 @@ export default function StoriesManager({ initialStories }: { initialStories: Sto
               <input
                 value={form.clientNames}
                 onChange={(e) => setForm({ ...form, clientNames: e.target.value })}
-                placeholder="Hari × Priya"
+                placeholder="Arun × Priya"
                 className="input"
               />
             </Field>

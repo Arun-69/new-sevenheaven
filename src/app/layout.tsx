@@ -3,7 +3,7 @@ import { Playfair_Display, Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import SiteChrome from "@/components/SiteChrome";
-// ✅ Change #1: resolveImage import நீக்கப்பட்டது
+import { resolveImage } from "@/lib/media";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -83,6 +83,8 @@ export const metadata: Metadata = {
   },
 };
 
+// Structured data (JSON-LD) — helps Google understand this is a local photography
+// business, improving eligibility for rich results, Maps, and the Knowledge Panel.
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -111,12 +113,13 @@ const localBusinessJsonLd = {
   ],
 };
 
-// ✅ Change #2: async + await resolveImage நீக்கப்பட்டது
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const logoUrl = await resolveImage("logo", siteConfig.logo);
+
   return (
     <html lang="en" className={`${playfair.variable} ${cormorant.variable} ${inter.variable}`}>
       <body className="font-sans bg-bg text-ink antialiased">
@@ -125,8 +128,7 @@ export default function RootLayout({
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
-        {/* ✅ Change #3: logoUrl prop நீக்கப்பட்டது */}
-        <SiteChrome>{children}</SiteChrome>
+        <SiteChrome logoUrl={logoUrl}>{children}</SiteChrome>
       </body>
     </html>
   );

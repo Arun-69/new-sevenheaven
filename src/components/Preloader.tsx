@@ -6,31 +6,41 @@ import CameraLoader from "@/components/CameraLoader";
 
 type Phase = "loading" | "flash" | "done";
 
+/**
+ * Full-screen loading screen shown on every fresh visit / full page load.
+ * It is part of the server-rendered HTML (starts visible), so the site UI
+ * never flashes before it. When the page + hero image have loaded, a camera
+ * "flash" fires and the screen fades away to reveal the UI.
+ */
 export default function Preloader({ logoUrl }: { logoUrl?: string } = {}) {
   const [visible, setVisible] = useState(true);
   const [phase, setPhase] = useState<Phase>("loading");
 
   useEffect(() => {
-    // Lock scroll
+    // Lock scrolling while the splash is up.
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    // ✅ UDANE flash-க்கு போ — 1.6s wait இல்ல
-    // Loader animation CSS-ல இருக்கு, அது instantly start ஆகும்.
-    // Camera animation-ஐ முழுசா பாக்க 1.8s குடு (feels intentional).
-    const t1 = setTimeout(() => setPhase("flash"), 1800);
+    // Show the animation for at least 1.6s so it feels intentional.
+    const minDisplay = new Promise((r) => setTimeout(r, 1600));
+    const pageLoad = new Promise((r) => {
+      if (document.readyState === "complete") r(true);
+      else window.addEventListener("load", () => r(true), { once: true });
+    });
+    // Never block the site for more than 5s on a very slow connection.
+    const maxWait = new Promise((r) => setTimeout(r, 5000));
 
-    // Safety: max 2.5s-ல force flash (slow connections-க்கு)
-    const t2 = setTimeout(() => setPhase("flash"), 2500);
+    Promise.all([minDisplay, Promise.race([pageLoad, maxWait])]).then(() =>
+      setPhase("flash")
+    );
 
     return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
       document.body.style.overflow = prev;
     };
   }, []);
 
-  // flash → done → remove
+  // Depends on a boolean (not `phase`) so moving flash -> done does not
+  // cancel the timer that finally removes the overlay.
   const flashed = phase !== "loading";
   useEffect(() => {
     if (!flashed) return;
@@ -52,14 +62,13 @@ export default function Preloader({ logoUrl }: { logoUrl?: string } = {}) {
           initial={{ opacity: 1 }}
           animate={{ opacity: phase === "done" ? 0 : 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-bg1 ${
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-bg ${
             flashed ? "pointer-events-none" : ""
           }`}
           aria-hidden="true"
         >
           <CameraLoader logoUrl={logoUrl} size={176} />
-
           <motion.p
             animate={{ opacity: [0.4, 1, 0.4] }}
             transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
