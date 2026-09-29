@@ -1,0 +1,16 @@
+[
+  {
+    "id": "founder",
+    "name": "The Founder",
+    "role": "Studio Owner & Lead Photographer",
+    "bio": "Started with one camera and a promise to never miss the moment that mattered. A decade later, that promise is the whole studio.",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop"
+  },
+  {
+    "id": "photographer-1",
+    "name": "Lead Photographer",
+    "role": "Weddings & Portraits",
+    "bio": "Finds the quiet moment in every loud room — the held hand, the held breath.",
+    "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop"
+  }
+]

@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Dark luxury palette — matches your gold logo */
+  --bg: #0E0E10;              /* deep charcoal (premium black) */
+  --bg-deep: #08080A;         /* deepest black */
+  --bg-elev: #16151A;         /* cards, elevated */
+  --bg-soft: #1F1D22;         /* hover surfaces */
+  --ink: #F7F2E7;             /* warm cream text */
+  --muted: #AD9F8F;           /* secondary text */
+  --gold: #f2a53d;            /* your logo gold */
+  --gold-soft: #F7C589;       /* hover accent */
+  --gold-deep: #c9791a;       /* borders, pressed */
+  --gold-glow: rgba(242, 165, 61, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(242, 165, 61, 0.10), transparent 60%),
+    radial-gradient(ellipse 900px 600px at 100% 20%, rgba(242, 165, 61, 0.06), transparent 55%),
+    radial-gradient(ellipse 1200px 700px at 50% 100%, rgba(242, 165, 61, 0.05), transparent 60%);
+  background-attachment: fixed;
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--gold);
+  color: #180f04;
+}
+
+/* Thin, elegant scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(242, 165, 61, 0.55);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Cinematic grain overlay */
+.grain-overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.container-edit {
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-edit {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+.gold-underline {
+  position: relative;
+}
+.gold-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gold-underline:hover::after {
+  width: 100%;
+}
+
+/* Premium gradient button */
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
+  color: #180f04;
+  box-shadow: 0 8px 30px -8px rgba(242, 165, 61, 0.45);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.35s ease;
+}
+.btn-gold:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 10px 40px -6px rgba(242, 165, 61, 0.6);
+  transform: translateY(-1px);
+}
+
+/* Image loading skeleton */
+.shimmer {
+  background: linear-gradient(
+    100deg,
+    rgba(242, 165, 61, 0) 30%,
+    rgba(242, 165, 61, 0.08) 50%,
+    rgba(242, 165, 61, 0) 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer-sweep 1.8s ease-in-out infinite;
+}
+@keyframes shimmer-sweep {
+  0% { background-position: 150% 0; }
+  100% { background-position: -50% 0; }
+}
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); opacity: 0.75; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+.animate-pulse-soft {
+  animation: pulse-soft 1.6s ease-in-out infinite;
+}
+
+/* ---------- NEW: Gold glow utility ---------- */
+.gold-glow {
+  box-shadow: 0 0 40px rgba(242, 165, 61, 0.12);
+}
+.gold-glow:hover {
+  box-shadow: 0 0 60px rgba(242, 165, 61, 0.28);
+}
+
+/* ---------- NEW: Card surface ---------- */
+.surface {
+  background: var(--bg-elev);
+  border: 1px solid rgba(242, 165, 61, 0.12);
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+.surface:hover {
+  border-color: rgba(242, 165, 61, 0.35);
+  box-shadow: 0 12px 40px -12px rgba(242, 165, 61, 0.25);
+}
