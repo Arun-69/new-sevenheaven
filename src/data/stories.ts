@@ -38,8 +38,8 @@ export const eventTypes: EventType[] = [
 
 export const stories: Story[] = [
   {
-    slug: "Hari-priya",
-    clientNames: "Hari × Priya",
+    slug: "arun-priya",
+    clientNames: "Arun × Priya",
     eventType: "Wedding",
     location: "Chennai",
     year: 2026,

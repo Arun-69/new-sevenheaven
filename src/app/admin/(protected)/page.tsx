@@ -8,7 +8,7 @@ const stats = [
 ];
 
 const recentEvents = [
-  { name: "Hari Wedding", date: "28 Sep" },
+  { name: "Arun Wedding", date: "28 Sep" },
   { name: "Priya Birthday", date: "04 Oct" },
   { name: "ABC Corporate", date: "08 Oct" },
   { name: "Kavya × Arjun Pre-Wedding", date: "12 Oct" },

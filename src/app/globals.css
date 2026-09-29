@@ -3,17 +3,12 @@
 @tailwind utilities;
 
 :root {
-  /* Dark luxury palette — matches your gold logo */
-  --bg: #0E0E10;              /* deep charcoal (premium black) */
-  --bg-deep: #08080A;         /* deepest black */
-  --bg-elev: #16151A;         /* cards, elevated */
-  --bg-soft: #1F1D22;         /* hover surfaces */
-  --ink: #F7F2E7;             /* warm cream text */
-  --muted: #AD9F8F;           /* secondary text */
-  --gold: #f2a53d;            /* your logo gold */
-  --gold-soft: #F7C589;       /* hover accent */
-  --gold-deep: #c9791a;       /* borders, pressed */
-  --gold-glow: rgba(242, 165, 61, 0.15);
+  --bg: #ffffff;
+  --bg-deep: #f7f1e7;
+  --ink: #1a140c;
+  --muted: #6e6153;
+  --gold: #b8860b;
+  --gold-deep: #8c660a;
 }
 
 * {
@@ -27,9 +22,9 @@ html {
 body {
   background-color: var(--bg);
   background-image:
-    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(242, 165, 61, 0.10), transparent 60%),
-    radial-gradient(ellipse 900px 600px at 100% 20%, rgba(242, 165, 61, 0.06), transparent 55%),
-    radial-gradient(ellipse 1200px 700px at 50% 100%, rgba(242, 165, 61, 0.05), transparent 60%);
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(184, 134, 11, 0.07), transparent 60%),
+    radial-gradient(ellipse 900px 600px at 100% 20%, rgba(184, 134, 11, 0.05), transparent 55%),
+    radial-gradient(ellipse 1200px 700px at 50% 100%, rgba(184, 134, 11, 0.04), transparent 60%);
   background-attachment: fixed;
   color: var(--ink);
   overflow-x: hidden;
@@ -46,13 +41,13 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(242, 165, 61, 0.55);
+  background: rgba(184, 134, 11, 0.45);
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 
-/* Cinematic grain overlay */
+/* Cinematic grain overlay, used in the hero */
 .grain-overlay {
   pointer-events: none;
   position: absolute;
@@ -98,7 +93,7 @@ body {
   width: 100%;
 }
 
-/* Premium gradient button */
+/* Premium gradient button — used for primary calls to action */
 .btn-gold {
   background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
   color: #180f04;
@@ -117,9 +112,9 @@ body {
 .shimmer {
   background: linear-gradient(
     100deg,
-    rgba(242, 165, 61, 0) 30%,
-    rgba(242, 165, 61, 0.08) 50%,
-    rgba(242, 165, 61, 0) 70%
+    rgba(184, 134, 11, 0) 30%,
+    rgba(184, 134, 11, 0.10) 50%,
+    rgba(184, 134, 11, 0) 70%
   );
   background-size: 200% 100%;
   animation: shimmer-sweep 1.8s ease-in-out infinite;
@@ -134,23 +129,4 @@ body {
 }
 .animate-pulse-soft {
   animation: pulse-soft 1.6s ease-in-out infinite;
-}
-
-/* ---------- NEW: Gold glow utility ---------- */
-.gold-glow {
-  box-shadow: 0 0 40px rgba(242, 165, 61, 0.12);
-}
-.gold-glow:hover {
-  box-shadow: 0 0 60px rgba(242, 165, 61, 0.28);
-}
-
-/* ---------- NEW: Card surface ---------- */
-.surface {
-  background: var(--bg-elev);
-  border: 1px solid rgba(242, 165, 61, 0.12);
-  transition: border-color 0.35s ease, box-shadow 0.35s ease;
-}
-.surface:hover {
-  border-color: rgba(242, 165, 61, 0.35);
-  box-shadow: 0 12px 40px -12px rgba(242, 165, 61, 0.25);
 }

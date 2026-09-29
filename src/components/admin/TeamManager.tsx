@@ -94,7 +94,7 @@ export default function TeamManager({ initialTeam }: { initialTeam: TeamMember[]
               <input
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                placeholder="Hari Kumar"
+                placeholder="Arun Kumar"
                 className="team-input"
               />
             </Field>

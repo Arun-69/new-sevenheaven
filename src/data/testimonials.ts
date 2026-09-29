@@ -11,7 +11,7 @@ export const testimonials: Testimonial[] = [
     id: "t1",
     quote:
       "They didn't just photograph our wedding. They captured everything we felt that day.",
-    clientNames: "Hari & Priya",
+    clientNames: "Arun & Priya",
     eventType: "Wedding",
     rating: 5,
   },

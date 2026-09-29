@@ -26,7 +26,7 @@ export const filmCategories: FilmCategory[] = [
 export const films: Film[] = [
   {
     id: "f1",
-    title: "Hari × Priya — The Full Story",
+    title: "Arun × Priya — The Full Story",
     category: "Wedding Films",
     thumbnail:
       "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop",
