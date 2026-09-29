@@ -1,13 +1,12 @@
 "use client";
 
 import { useState, Suspense } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { Lock } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 function LoginForm() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -30,8 +29,11 @@ function LoginForm() {
         return;
       }
       const next = searchParams.get("next") || "/admin";
-      router.push(next);
-      router.refresh();
+      // A full page navigation (not router.push) so the very next request
+      // definitely carries the just-set session cookie and isn't served
+      // from Next's client-side router cache — otherwise the first login
+      // attempt can appear to fail and only work after a manual refresh.
+      window.location.href = next;
     } catch {
       setError("Something went wrong. Please try again.");
       setLoading(false);

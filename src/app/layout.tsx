@@ -5,6 +5,15 @@ import { siteConfig } from "@/config/site";
 import SiteChrome from "@/components/SiteChrome";
 import { resolveImage } from "@/lib/media";
 
+// The whole site reads admin-editable content (media overrides, stories,
+// services, pricing, team) on every request, so every route must render
+// dynamically rather than being statically pre-rendered at build time —
+// otherwise admin edits wouldn't show up without a full redeploy, and (on
+// hosts using Vercel Blob for storage) the build itself fails trying to
+// statically pre-render a page that reads live data. This setting on the
+// root layout applies to every route in the app.
+export const dynamic = "force-dynamic";
+
 const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
