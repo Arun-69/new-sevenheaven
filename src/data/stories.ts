@@ -1,0 +1,215 @@
+export type EventType =
+  | "Wedding"
+  | "Engagement"
+  | "Birthday"
+  | "Baby Shower"
+  | "Corporate"
+  | "Pre-Wedding"
+  | "Graduation"
+  | "Other";
+
+export interface StorySection {
+  key: string;
+  title: string;
+  images: string[];
+}
+
+export interface Story {
+  slug: string;
+  clientNames: string;
+  eventType: EventType;
+  location: string;
+  year: number;
+  coverImage: string;
+  excerpt: string;
+  sections: StorySection[];
+}
+
+export const eventTypes: EventType[] = [
+  "Wedding",
+  "Engagement",
+  "Birthday",
+  "Baby Shower",
+  "Corporate",
+  "Pre-Wedding",
+  "Graduation",
+  "Other",
+];
+
+export const stories: Story[] = [
+  {
+    slug: "Hari-priya",
+    clientNames: "Hari × Priya",
+    eventType: "Wedding",
+    location: "Chennai",
+    year: 2026,
+    coverImage:
+      "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop",
+    excerpt: "Two families, one morning, a hundred small miracles.",
+    sections: [
+      {
+        key: "invitation",
+        title: "THE INVITATION",
+        images: [
+          "https://images.unsplash.com/photo-1607344645866-009c320c5ab0?q=80&w=1600&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1607190074257-dd4b7af0309b?q=80&w=1600&auto=format&fit=crop",
+        ],
+      },
+      {
+        key: "arrival",
+        title: "THE ARRIVAL",
+        images: [
+          "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1600&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1600&auto=format&fit=crop",
+        ],
+      },
+      {
+        key: "ceremony",
+        title: "THE CEREMONY",
+        images: [
+          "https://images.unsplash.com/photo-1511285560929-e5f2c7c51f42?q=80&w=1600&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1600&auto=format&fit=crop",
+        ],
+      },
+      {
+        key: "people",
+        title: "THE PEOPLE",
+        images: [
+          "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1600&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1600&auto=format&fit=crop",
+        ],
+      },
+      {
+        key: "party",
+        title: "THE PARTY",
+        images: [
+          "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1600&auto=format&fit=crop",
+        ],
+      },
+      {
+        key: "memories",
+        title: "THE MEMORIES",
+        images: [
+          "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "priya-birthday",
+    clientNames: "Priya's 30th",
+    eventType: "Birthday",
+    location: "Bengaluru",
+    year: 2026,
+    coverImage:
+      "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1600&auto=format&fit=crop",
+    excerpt: "Thirty candles, one very loud room of people who love her.",
+    sections: [
+      {
+        key: "celebration",
+        title: "THE CELEBRATION",
+        images: [
+          "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1600&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=1600&auto=format&fit=crop",
+        ],
+      },
+      {
+        key: "memories",
+        title: "THE MEMORIES",
+        images: [
+          "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1600&auto=format&fit=crop",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "abc-corporate-summit",
+    clientNames: "ABC Corp. Summit",
+    eventType: "Corporate",
+    location: "Hyderabad",
+    year: 2026,
+    coverImage:
+      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1600&auto=format&fit=crop",
+    excerpt: "Three stages, four hundred guests, one brand story.",
+    sections: [
+      {
+        key: "arrival",
+        title: "THE ARRIVAL",
+        images: [
+          "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1600&auto=format&fit=crop",
+        ],
+      },
+      {
+        key: "ceremony",
+        title: "ON STAGE",
+        images: [
+          "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=1600&auto=format&fit=crop",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "kavya-arjun-prewedding",
+    clientNames: "Kavya × Arjun",
+    eventType: "Pre-Wedding",
+    location: "Coorg",
+    year: 2026,
+    coverImage:
+      "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1600&auto=format&fit=crop",
+    excerpt: "Mist, coffee estates, and two people figuring out forever.",
+    sections: [
+      {
+        key: "story",
+        title: "THE STORY",
+        images: [
+          "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1600&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1600&auto=format&fit=crop",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "meera-baby-shower",
+    clientNames: "Meera's Baby Shower",
+    eventType: "Baby Shower",
+    location: "Pune",
+    year: 2026,
+    coverImage:
+      "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1600&auto=format&fit=crop",
+    excerpt: "Soft colours, softer joy, for a room waiting on one more.",
+    sections: [
+      {
+        key: "celebration",
+        title: "THE CELEBRATION",
+        images: [
+          "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1600&auto=format&fit=crop",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "rahul-engagement",
+    clientNames: "Rahul × Sneha",
+    eventType: "Engagement",
+    location: "Goa",
+    year: 2025,
+    coverImage:
+      "https://images.unsplash.com/photo-1511285560929-e5f2c7c51f42?q=80&w=1600&auto=format&fit=crop",
+    excerpt: "A ring, a shoreline, and the start of the real story.",
+    sections: [
+      {
+        key: "ceremony",
+        title: "THE MOMENT",
+        images: [
+          "https://images.unsplash.com/photo-1511285560929-e5f2c7c51f42?q=80&w=1600&auto=format&fit=crop",
+        ],
+      },
+    ],
+  },
+];
+
+export const storiesByEventType = (type: EventType) =>
+  stories.filter((s) => s.eventType === type);
+
+export const getStoryBySlug = (slug: string) =>
+  stories.find((s) => s.slug === slug);
