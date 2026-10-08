@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import PricingSection from "@/components/sections/PricingSection";
 import PackageBuilder from "@/components/PackageBuilder";
-import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: `Packages & Pricing — ${siteConfig.name}`,
-  description: "Simple, transparent photography and event packages — or build your own.",
+  title: "Wedding Photography Packages & Pricing",
+  description:
+    "Affordable, transparent wedding photography and videography packages in Perambalur, Tamil Nadu — or build your own custom package.",
+  alternates: { canonical: "/packages" },
 };
 
 export default function PackagesPage() {

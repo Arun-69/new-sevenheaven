@@ -4,12 +4,13 @@ import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import CTA from "@/components/CTA";
 import { serviceCategories } from "@/data/services";
-import { siteConfig } from "@/config/site";
 import { getServices } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: `Services — ${siteConfig.name}`,
-  description: siteConfig.metaDescription,
+  title: "Wedding Photography, Videography & Event Services",
+  description:
+    "Candid wedding photography, pre-wedding shoots, cinematic wedding films, albums and event media services in Perambalur and across Tamil Nadu.",
+  alternates: { canonical: "/services" },
 };
 
 export default async function ServicesPage() {

@@ -3,12 +3,13 @@ import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import CTA from "@/components/CTA";
-import { siteConfig } from "@/config/site";
 import { getTeam } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: `About — ${siteConfig.name}`,
-  description: "The people behind the memories.",
+  title: "About Us — Wedding & Event Photographers in Perambalur",
+  description:
+    "Meet the Seven Heaven Photography team from Asoor, Perambalur — photographers and filmmakers capturing weddings and events across Tamil Nadu since 2016.",
+  alternates: { canonical: "/about" },
 };
 
 export default async function AboutPage() {

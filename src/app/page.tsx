@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import IntroSection from "@/components/sections/IntroSection";
 import ServicesSection from "@/components/sections/ServicesSection";
@@ -16,6 +17,10 @@ import CTA from "@/components/CTA";
 import { resolveImage } from "@/lib/media";
 import { DEFAULT_HERO_IMAGE } from "@/lib/hero-default";
 import { getStories } from "@/lib/content";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default async function HomePage() {
   const heroImage = await resolveImage("hero", DEFAULT_HERO_IMAGE);
