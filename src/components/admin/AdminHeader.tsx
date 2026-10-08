@@ -13,7 +13,7 @@ export default function AdminHeader() {
     // Full navigation, same reasoning as the login page: guarantees the
     // cleared session cookie is respected on the very next request instead
     // of a stale client-side router cache being reused.
-    window.location.href = "/admin/login";
+    window.location.href = "/";
   };
 
   return (
