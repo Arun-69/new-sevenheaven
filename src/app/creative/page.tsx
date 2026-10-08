@@ -4,12 +4,12 @@ import SectionHeading from "@/components/SectionHeading";
 import PortfolioCard from "@/components/PortfolioCard";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import CTA from "@/components/CTA";
-import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: `Creative Design — ${siteConfig.name}`,
+  title: "Creative Design — Invitations, Posters & Photo Editing",
   description:
-    "Invitations, posters, social media design and photo editing — the visual language of your event.",
+    "Wedding invitations, posters, social media design and photo editing from Seven Heaven Photography — the visual language of your event.",
+  alternates: { canonical: "/creative" },
 };
 
 const creativeItems = [

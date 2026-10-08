@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import StoryCard from "@/components/StoryCard";
 import Reveal from "@/components/Reveal";
 import CTA from "@/components/CTA";
-import { siteConfig } from "@/config/site";
 import { getStories } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: `Stories — ${siteConfig.name}`,
-  description: "Real events, real stories — captured, created, and preserved.",
+  title: "Wedding Stories & Real Event Photography",
+  description:
+    "Real weddings and events photographed by Seven Heaven Photography in Perambalur and Tamil Nadu — captured, created and preserved.",
+  alternates: { canonical: "/stories" },
 };
 
 export default async function StoriesPage() {

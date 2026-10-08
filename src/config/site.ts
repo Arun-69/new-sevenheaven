@@ -6,13 +6,13 @@ export const siteConfig = {
   shortName: "Seven Heaven",
   tagline: "We Capture It. We Create It. We Preserve It.",
   metaDescription:
-    "Seven Heaven Photography — photography, cinematic films, graphic design, albums and complete event media services — one studio, everything your event needs.",
+    "Seven Heaven Photography — wedding photographer in Perambalur, Tamil Nadu. Candid wedding photography, pre-wedding shoots, cinematic films, albums and complete event media services.",
 
   // Logo (used in Navbar, Footer, Preloader, and favicons in /public)
   logo: "/logo.png",
 
   // TODO: replace with your real live domain once it's live (used for SEO: sitemap, robots, canonical URLs, JSON-LD).
-  siteUrl: "https://www.sevenheavenphotography.com",
+  siteUrl: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.sevenheavenphotography.com").replace(/\/$/, ""),
 
   // A few keywords the studio should be found for. Used in the SEO meta tags.
   keywords: [
@@ -38,12 +38,12 @@ export const siteConfig = {
   // Contact
   phone: "+91 8098486021",
   whatsapp: "918098486021", // digits only, country code first, used for wa.me links
-  email: "hello@sevenheavenphotography.com",
+  email: "sevenheavenphotography3399@gmail.com",
   // TODO: confirm the exact address/area — this is a placeholder, edit it here and it updates everywhere (footer, SEO schema).
   location: "Asoor, Perambalur, Tamil Nadu",
   locationMapUrl: "Seven Heaven Photography, Asoor, Perambalur, Tamil Nadu",
   // Social
-  instagram: "https://https://www.instagram.com/seven_heaven__photography?stkn=MWpibno1ZHNicW9mbQ%3D%3D.com/sevenheavenphotography",
+  instagram: "https://www.instagram.com/seven_heaven__photography",
   facebook: "https://facebook.com/sevenheavenphotography",
   youtube: "https://youtube.com/@sevenheavenphotography",
 

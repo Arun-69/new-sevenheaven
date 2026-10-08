@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import SiteChrome from "@/components/SiteChrome";
@@ -7,58 +6,47 @@ import { resolveImage } from "@/lib/media";
 
 // The whole site reads admin-editable content (media overrides, stories,
 // services, pricing, team) on every request, so every route must render
-// dynamically rather than being statically pre-rendered at build time —
-// otherwise admin edits wouldn't show up without a full redeploy, and (on
-// hosts using Vercel Blob for storage) the build itself fails trying to
-// statically pre-render a page that reads live data. This setting on the
-// root layout applies to every route in the app.
+// dynamically rather than being statically pre-rendered at build time.
+// This setting on the root layout applies to every route in the app.
 export const dynamic = "force-dynamic";
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-playfair",
-  display: "swap",
-});
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-cormorant",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const titleTemplate = `${siteConfig.name} — Photography, Films & Creative Events`;
+const titleTemplate = `${siteConfig.name} — Wedding Photographer in Perambalur, Tamil Nadu`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
+
   title: {
     default: titleTemplate,
     template: `%s — ${siteConfig.name}`,
   },
+
   description: siteConfig.metaDescription,
   keywords: [...siteConfig.keywords],
+
   applicationName: siteConfig.name,
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
-  alternates: {
-    canonical: "/",
-  },
+
   icons: {
     icon: [
       { url: "/favicon.ico" },
-      { url: "/logo-256.png", type: "image/png", sizes: "256x256" },
+      {
+        url: "/logo-256.png",
+        type: "image/png",
+        sizes: "256x256",
+      },
     ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+
+    apple: [
+      {
+        url: "/apple-touch-icon.png",
+        sizes: "180x180",
+      },
+    ],
+
     shortcut: ["/favicon.ico"],
   },
+
   openGraph: {
     title: titleTemplate,
     description: siteConfig.metaDescription,
@@ -66,6 +54,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     url: siteConfig.siteUrl,
     locale: "en_IN",
+
     images: [
       {
         url: "/logo-512.png",
@@ -75,15 +64,18 @@ export const metadata: Metadata = {
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
     title: titleTemplate,
     description: siteConfig.metaDescription,
     images: ["/logo-512.png"],
   },
+
   robots: {
     index: true,
     follow: true,
+
     googleBot: {
       index: true,
       follow: true,
@@ -92,27 +84,51 @@ export const metadata: Metadata = {
   },
 };
 
-// Structured data (JSON-LD) — helps Google understand this is a local photography
-// business, improving eligibility for rich results, Maps, and the Knowledge Panel.
+// Structured data (JSON-LD) — helps Google understand this is a local
+// photography business, improving eligibility for rich results.
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": "Photographer",
+
   "@id": `${siteConfig.siteUrl}/#business`,
+
   name: siteConfig.name,
+
   image: `${siteConfig.siteUrl}/logo-512.png`,
   logo: `${siteConfig.siteUrl}/logo-512.png`,
+
   url: siteConfig.siteUrl,
+
   telephone: siteConfig.phone,
   email: siteConfig.email,
+
   description: siteConfig.metaDescription,
+
   priceRange: "₹₹",
+
+  foundingDate: String(siteConfig.foundedYear),
+
   address: {
     "@type": "PostalAddress",
-    addressLocality: siteConfig.location,
+    streetAddress: "Asoor",
+    addressLocality: "Perambalur",
+    addressRegion: "Tamil Nadu",
     addressCountry: "IN",
   },
-  sameAs: [siteConfig.instagram, siteConfig.facebook, siteConfig.youtube],
-  areaServed: siteConfig.location,
+
+  sameAs: [
+    siteConfig.instagram,
+    siteConfig.facebook,
+    siteConfig.youtube,
+  ],
+
+  areaServed: [
+    "Perambalur",
+    "Ariyalur",
+    "Trichy",
+    "Tamil Nadu",
+  ],
+
   serviceType: [
     "Wedding Photography",
     "Event Photography",
@@ -130,14 +146,19 @@ export default async function RootLayout({
   const logoUrl = await resolveImage("logo", siteConfig.logo);
 
   return (
-    <html lang="en" className={`${playfair.variable} ${cormorant.variable} ${inter.variable}`}>
+    <html lang="en">
       <body className="font-sans bg-bg text-ink antialiased">
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessJsonLd),
+          }}
         />
-        <SiteChrome logoUrl={logoUrl}>{children}</SiteChrome>
+
+        <SiteChrome logoUrl={logoUrl}>
+          {children}
+        </SiteChrome>
       </body>
     </html>
   );

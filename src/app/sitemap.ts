@@ -1,5 +1,4 @@
 import { MetadataRoute } from "next";
-import { galleries } from "@/data/galleries";
 import { siteConfig } from "@/config/site";
 import { getStories } from "@/lib/content";
 
@@ -27,10 +26,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(),
   }));
 
-  const galleryRoutes = galleries.map((gallery) => ({
-    url: `${baseUrl}/gallery/${gallery.slug}`,
-    lastModified: new Date(),
-  }));
-
-  return [...staticRoutes, ...storyRoutes, ...galleryRoutes];
+  return [...staticRoutes, ...storyRoutes];
 }

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import ContactForm from "@/components/ContactForm";
-import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: `Contact — ${siteConfig.name}`,
-  description: `Get in touch with ${siteConfig.name} to plan your wedding, event, or shoot. WhatsApp, call, or send an enquiry — we reply within 24 hours.`,
+  title: "Contact & Booking — Wedding Photographer Perambalur",
+  description:
+    "Book Seven Heaven Photography for your wedding or event in Perambalur, Tamil Nadu. WhatsApp, call or send an enquiry — we reply within 24 hours.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

@@ -21,8 +21,14 @@ export async function generateMetadata({
   const story = await getStoryBySlug(params.slug);
   if (!story) return { title: `Story — ${siteConfig.name}` };
   return {
-    title: `${story.clientNames} — ${story.eventType} | ${siteConfig.name}`,
+    title: `${story.clientNames} — ${story.eventType} Photography`,
     description: story.excerpt,
+    alternates: { canonical: `/stories/${story.slug}` },
+    openGraph: {
+      title: `${story.clientNames} — ${story.eventType} Photography`,
+      description: story.excerpt,
+      type: "article",
+    },
   };
 }
 
