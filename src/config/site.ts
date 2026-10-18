@@ -12,7 +12,7 @@ export const siteConfig = {
   logo: "/logo.png",
 
   // TODO: replace with your real live domain once it's live (used for SEO: sitemap, robots, canonical URLs, JSON-LD).
-  siteUrl: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.sevenheavenphotography.com").replace(/\/$/, ""),
+  siteUrl: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.sevenheavenphotograpy.com").replace(/\/$/, ""),
 
   // A few keywords the studio should be found for. Used in the SEO meta tags.
   keywords: [
